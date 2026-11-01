@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Heros – Ficha de Personagem</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>The Heros <small>RPG de investigação e ação</small></h1>
+  <div class="tools">
+    <select id="sel" aria-label="Ficha"></select>
+    <button data-new>Nova ficha</button><button data-del>Excluir</button>
+    <button data-exp>Exportar</button><button data-imp>Importar</button>
+    <input type="file" id="file" accept=".json" hidden>
+  </div>
+</header>
+<main>
+  <div class="col">
+    <section class="card"><h2>Personagem</h2>
+      <div class="g2">
+        <label class="w2">Nome<input data-k="nome"></label>
+        <label>Idade<input type="number" data-k="idade"></label>
+        <label>Raça<select data-k="raca"><option>Desperto</option><option>Comum</option></select></label>
+        <label>Classe<select data-k="classe" id="classe"></select></label>
+        <label>Origem<select data-k="origem" id="origem"></select></label>
+        <label>EXP<input type="number" data-k="exp"></label>
+        <label>Créditos (Cr)<input type="number" data-k="cr"></label>
+        <label>Sorte (SOR)<span class="row"><input type="number" data-k="sor"><button data-r="sor">🎲</button></span></label>
+        <label>Deslocamento (DES)<output id="des"></output></label>
+        <label>Defesa (DEF)<span class="row"><output id="def"></output><input type="number" data-k="defx" placeholder="+equip."></span></label>
+        <label>Vitalidade Crítica<input type="number" min="0" max="3" data-k="vc"></label>
+      </div>
+      <p id="hab" class="note"></p>
+    </section>
+    <section class="card"><h2>Atributos <button data-all>Rolar 3d6 em todos</button></h2><div id="attrs" class="g3"></div></section>
+    <section class="card"><h2>Condições <button data-full>Cheio</button><button data-rest>Descansar 8h</button></h2><div id="cond"></div></section>
+    <section class="card"><h2>Rolador de dados</h2>
+      <div class="row"><input id="dx" value="1d20" aria-label="Expressão de dados"><button id="rx">Rolar</button></div>
+      <div id="log"></div></section>
+  </div>
+  <div class="col">
+    <section class="card"><h2>Perícias <span class="pp">Pontos: <b id="pp"></b></span><input id="q" placeholder="Buscar perícia…"></h2>
+      <table id="skills"><thead><tr><th>Perícia</th><th>Pontos</th><th>Origem</th><th>Total</th><th></th></tr></thead><tbody></tbody></table></section>
+    <section class="card"><h2>Armas e equipamentos <button data-add="armas">Adicionar</button></h2><div id="armas" class="scroll"></div></section>
+    <section class="card"><h2>Poderes <button data-add="pod">Adicionar</button></h2><div id="pod" class="scroll"></div></section>
+    <section class="card"><h2>Inventário</h2><textarea data-k="inv" rows="5"></textarea></section>
+    <section class="card"><h2>História e investigação</h2><textarea data-k="hist" rows="8"></textarea></section>
+  </div>
+</main>
+<script src="script.js"></script>
+</body>
+</html>

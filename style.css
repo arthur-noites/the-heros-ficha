@@ -69,3 +69,11 @@ small{color:var(--mut)}
  .scroll td.ac{display:flex;gap:6px}.scroll td.ac button{flex:1}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* v3 */
+h2::before{content:"";width:4px;height:16px;border-radius:2px;background:linear-gradient(#8b5cf6,#d946ef)}
+.card{box-shadow:0 8px 24px #0006}
+.bar{height:14px}
+.attr:focus-within,.stats>*:focus-within{border-color:var(--pu)}
+button:active{transform:scale(.97)}
+.g2>*,.stats>*{min-width:0}

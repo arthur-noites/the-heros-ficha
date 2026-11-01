@@ -2,6 +2,7 @@ const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const d=n=>1+Math.floor(Math.random()*n);
 const esc=s=>String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
 const A=['for','agi','int','von','pre'];
+const N=k=>k=='von'?'VIG':k.toUpperCase();
 const S=[['Acrobacia','agi'],['Adestramento','pre'],['Arremessar','agi'],['Artes','pre'],['Atletismo','agi'],['Atuação','pre'],['Atualidades','int'],['Ciência','int'],['Crime','agi'],['Diplomacia','pre'],['Disfarce','pre'],['Enganação','pre'],['Furtividade','agi'],['Iniciativa','agi'],['Intimidação','pre'],['Intuição','pre'],['Investigação','int'],['Luta','for'],['Mecânica','int'],['Medicina','int'],['Ocultismo','pre'],['Percepção','pre'],['Pilotagem','agi'],['Pontaria','agi'],['Profissão','int'],['Proteção','von'],['Reflexo','agi'],['Resistência','von'],['Saltar','agi'],['Sobrevivência','int'],['Tática','int'],['Tecnologia','int'],['Vontade','pre']];
 const C={
 'Guardião':{p:'Proteção, Resistência, Luta',h:'Instinto Heroico: rola 1d100 se a vida chegar a 1 (1x por sessão).'},
@@ -47,9 +48,9 @@ function load(){c=db[cur]=Object.assign(nova(),db[cur]);
 /* montagem inicial */
 $('#classe').innerHTML=Object.keys(C).map(x=>`<option>${x}</option>`).join('');
 $('#origem').innerHTML=Object.keys(O).map(x=>`<option>${x}</option>`).join('');
-$('#attrs').innerHTML=A.map(k=>`<label class="attr">${k.toUpperCase()}<input type="number" inputmode="numeric" data-k="${k}"></label>`).join('');
+$('#attrs').innerHTML=A.map(k=>`<label class="attr">${N(k)}<input type="number" inputmode="numeric" data-k="${k}"></label>`).join('');
 $('#cond').innerHTML=[['pv','PV','red'],['san','SAN','blue'],['enr','ENR','gold enrb']].map(([k,l,col])=>`<div class="cd ${col}"><div class="top"><b>${l}</b><span class="val"><input type="number" inputmode="numeric" data-k="${k}" aria-label="${l} atual"> / <input type="number" inputmode="numeric" data-k="${k}M" aria-label="${l} máximo"></span></div><div class="bar"><i id="f-${k}"></i></div><div class="btns"><button data-b="${k}:-5">−5</button><button data-b="${k}:-1">−1</button><button data-b="${k}:1">+1</button><button data-b="${k}:5">+5</button></div></div>`).join('');
-$('#skills tbody').innerHTML=S.map(([n,a])=>`<tr data-row="${n}"><td>${n} <small>(${a.toUpperCase()})</small></td><td><input type="number" min="0" data-p="${n}"></td><td data-o="${n}"></td><td class="tt" data-t="${n}"></td><td><button data-s="${n}" title="Rolar 1d20 + ${a.toUpperCase()} + perícia">🎲</button></td></tr>`).join('');
+$('#skills tbody').innerHTML=S.map(([n,a])=>`<tr data-row="${n}"><td>${n} <small>(${N(a)})</small></td><td><input type="number" min="0" data-p="${n}"></td><td data-o="${n}"></td><td class="tt" data-t="${n}"></td><td><button data-s="${n}" title="Rolar 1d20 + ${N(a)} + perícia">🎲</button></td></tr>`).join('');
 /* eventos */
 document.addEventListener('input',e=>{const t=e.target,D=t.dataset;
  if(D.k){c[D.k]=t.value;if(D.k=='nome')$('#sel').selectedOptions[0].textContent=t.value||'Sem nome'}

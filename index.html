@@ -21,21 +21,24 @@
     <section class="card"><h2>Personagem</h2>
       <div class="g2">
         <label class="w2">Nome<input data-k="nome"></label>
-        <label>Idade<input type="number" data-k="idade"></label>
+        <label>Idade<input type="number" inputmode="numeric" data-k="idade"></label>
         <label>Raça<select data-k="raca"><option>Desperto</option><option>Comum</option></select></label>
         <label>Classe<select data-k="classe" id="classe"></select></label>
         <label>Origem<select data-k="origem" id="origem"></select></label>
-        <label>EXP<input type="number" data-k="exp"></label>
-        <label>Créditos (Cr)<input type="number" data-k="cr"></label>
-        <label>Sorte (SOR)<span class="row"><input type="number" data-k="sor"><button data-r="sor">🎲</button></span></label>
-        <label>Deslocamento (DES)<output id="des"></output></label>
-        <label>Defesa (DEF)<span class="row"><output id="def"></output><input type="number" data-k="defx" placeholder="+equip."></span></label>
-        <label>Vitalidade Crítica<input type="number" min="0" max="3" data-k="vc"></label>
+        <label>EXP<input type="number" inputmode="numeric" data-k="exp"></label>
+        <label>Créditos (Cr)<input type="number" inputmode="numeric" data-k="cr"></label>
+        <label>Sorte<input type="number" inputmode="numeric" data-k="sor"></label>
+        <label>Vitalidade crítica<input type="number" inputmode="numeric" min="0" max="3" data-k="vc"></label>
+      </div>
+      <div class="stats">
+        <div><output id="des"></output><span>Deslocamento</span></div>
+        <div><output id="def"></output><span>Defesa</span></div>
+        <label><input type="number" inputmode="numeric" data-k="defx"><span>Bônus de defesa</span></label>
       </div>
       <p id="hab" class="note"></p>
     </section>
-    <section class="card"><h2>Atributos <button data-all>Rolar 3d6 em todos</button></h2><div id="attrs" class="g3"></div></section>
     <section class="card"><h2>Condições <button data-full>Cheio</button><button data-rest>Descansar 8h</button></h2><div id="cond"></div></section>
+    <section class="card"><h2>Atributos</h2><div id="attrs" class="g5"></div></section>
     <section class="card"><h2>Rolador de dados</h2>
       <div class="row"><input id="dx" value="1d20" aria-label="Expressão de dados"><button id="rx">Rolar</button></div>
       <div id="log"></div></section>
